@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Akshat's Website</title>
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="video-background">
+        <source src="light_mode.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="content-wrapper">
+        <!-- Navbar -->
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0);" onclick="showContent('about')">About</a></li>
+                <li><a href="javascript:void(0);" onclick="showContent('education')">Education</a></li>
+                <li><a href="javascript:void(0);" onclick="showContent('achievements')">Achievements</a></li>
+                <li><a href="javascript:void(0);" onclick="showContent('skills')">Skills</a></li>
+                <li><a href="blog1.html" target="_blank">Blog 1</a></li>
+                <li><a href="blog2.html" target="_blank">Blog 2</a></li>
+                <li><a href="javascript:void(0);" onclick="showContent('resume')">Resume</a></li>
+            </ul>
+        </nav>
+
+        <!-- Social Media Icons at the bottom right -->
+        <div class="social-icons">
+            <a href="https://github.com/AKSHAT0604" target="_blank"><img src="github-icon.png" alt="GitHub"></a>
+            <a href="mailto:akshatsrivastava6951@gmail.com" target="_blank"><img src="email-icon.png" alt="Email"></a>
+            <a href="https://www.linkedin.com/in/akshat-srivastava-8217362b2" target="_blank"><img
+                    src="linkedin-icon.png" alt="LinkedIn"></a>
+        </div>
+
+        <div id="toggle-mode" class="toggle-switch">
+            <input type="checkbox" id="mode-toggle" onchange="toggleMode()">
+            <label for="mode-toggle"></label>
+        </div>
+
+        <!-- Main Content -->
+        <div id="about">
+            <h1 class="main-heading">ABOUT ME :</h1>
+            <div class="about-text">
+                <p>Hello ! My name is Akshat Srivastava.<br> I am currently 18 yrs old and was born<br> on 6<sup>th</sup> April
+                    2005. I am from Haryana
+                    <br>but I have spent some years living in <br>Himachal Pradesh as well. My hobbies are <br>cooking, eating,
+                    playing games,<br> and having fun
+                    with my friends. <br>I am also interested in AI and simulations.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="about.jpg" alt="About Image">
+                <div class="image-description">This is me on my latest trip to my father's workplace in Jammu and
+                    Kashmir
+                </div>
+            </div>
+        </div>
+
+        <div id="education" style="display: none;">
+            <h1 class="main-heading">Education Background</h1>
+            <p>I have done my complete schoold education in the CBSE board pattern and been in 3 schools throughout my
+                schooling</p>
+            <ul>
+                <li onmouseover="showSchoolImage('trinity')" onmouseout="hideSchoolImage()">Trinity School in Himachal
+                </li>
+                <li onmouseover="showSchoolImage('eicher')" onmouseout="hideSchoolImage()">Eicher School in Haryana
+                    (NCR)</li>
+                <li onmouseover="showSchoolImage('vidya_niketan')" onmouseout="hideSchoolImage()">Modern Vidya Niketan
+                    Aravali Hills in Haryana (NCR)</li>
+            </ul>
+            <div id="school-images" style="text-align: center;"></div>
+            <p>I was a good student all of my years at these schools I scored around 98% in class 1o<sup>th</sup> boards
+                <br>
+                and around 91% IN CLASS 12<sup>th</sup> I also studied in FIITJEE for my JEE preparation after
+                highschool><br>
+                Now I am doing my Undergraduade and Masters degree from <b>IIIT-Hyderabad</b> both my Btech and Ms
+                degrees are of<br>
+                Computer Science
+            </p>
+        </div>
+
+        <div id="achievements" style="display: none; text-align: center;">
+            <h1>Achievements</h1>
+            <div class="achievement" id="olympiads" onmouseover="showDetails('olympiads')">
+                <h2>1) Olympiads</h2>
+                <p class="details">From class 3<sup>rd</sup> to 12<sup>th</sup>, I have won various school district
+                    state regional<br>
+                    and international medals in olympiads organized by SOF and SilverZone.<br>
+                    I also won some shields awards and cash money through these exams.</p>
+                <img src="olympiads.jpg" alt="Olympiads Image" width="300" height="350" style="margin: 0 auto;">
+            </div>
+
+            <div class="achievement" id="kvpysel" onmouseover="showDetails('kvpysel')">
+                <h2>2) KVPY Selection</h2>
+                <p class="details">I qualified KVPY exam in 2023 with 2.3K rank and was part of the qualifying list
+                    <br>that too I did with absolute
+                    preparations </p>
+                <img src="kvpysel.png" alt="KVPY Selection Image" width="300" height="350" style="margin: 0 auto;">
+            </div>
+
+            <div class="achievement" id="air16" onmouseover="showDetails('air16')">
+                <h2>3) AIR-16 in UGEE</h2>
+                <p class="details">I got AIR 16 in UGEE in 2023, and the best part about it is I barely prepared for it
+                    as I was self-confident<br>
+                    on my logical reasoning skills, and my JEE preparation helped me enough with the PCM part<br>
+                    I also somehow nailed my interview with some quick-witted replies and some good luck</p>
+                <img src="air16.jpg" alt="AIR-16 Image" width="300" height="350" style="margin: 0 auto;">
+            </div>
+        </div>
+
+
+
+        <!-- HTML for skills -->
+        <div id="skills" style="display: none;">
+            <h1>Skills</h1>
+            <div class="slanted-heading" id="c_cpp">
+                <h2>1) C/C++</h2>
+            </div>
+            <div class="slanted-heading" id="html_css_js">
+                <h2>2) HTML, CSS, JavaScript</h2>
+            </div>
+            <div class="slanted-heading" id="python">
+                <h2>3) Python</h2>
+            </div>
+            <div class="slanted-heading" id="swimming">
+                <h2>4) Multi Style Swimming</h2>
+            </div>
+            <div class="slanted-heading" id="debate">
+                <h2>5) Debate</h2>
+            </div>
+            <div class="slanted-heading" id="logic">
+                <h2>6) Logic Implementation</h2>
+            </div>
+        </div>
+
+
+
+        <div id="blog" style="display: none;">
+            <h1>Blog</h1>
+            <!-- Add placeholder blogs with like counter and comments section -->
+            <div class="blog-post" id="blog1">
+                <h2>Blog Title 1</h2>
+                <p>Blog content goes here.</p>
+                <div class="interaction-section">
+                    <button id="like_button_blog1" onclick="likePost('blog1')">Like</button>
+                    <span id="likes_blog1">0 Likes</span>
+                    <button onclick="showComments('blog1')">Show Comments</button>
+                    <div id="comments_blog1" style="display: none;">
+                        <!-- Comments go here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Add another placeholder blog -->
+            <div class="blog-post" id="blog2">
+                <h2>Blog Title 2</h2>
+                <p>Blog content goes here.</p>
+                <div class="interaction-section">
+                    <button id="like_button_blog2" onclick="likePost('blog2')">Like</button>
+                    <span id="likes_blog2">0 Likes</span>
+                    <button onclick="showComments('blog2')">Show Comments</button>
+                    <div id="comments_blog2" style="display: none;">
+                        <!-- Comments go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add your socials with icons here -->
+        <div id="socials" style="display: none;">
+            <div class="social-icons">
+                <a href="https://github.com/AKSHAT0604" target="_blank"><img src="github-icon.png" alt="GitHub"></a>
+                <a href="mailto:akshatsrivastava6951@gmail.com" target="_blank"><img src="email-icon.png"
+                        alt="Email"></a>
+                <a href="https://www.linkedin.com/in/akshat-srivastava-8217362b2" target="_blank"><img
+                        src="linkedin-icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+
+        <!-- Add hyperlink to your resume -->
+        <div id="resume" style="display: none;">
+            <h1>
+                <span class="resume-heading">M</span>
+                <span class="resume-heading">Y</span>
+                <span class="resume-heading">&nbsp;</span> <!-- Add space between letters -->
+                <span class="resume-heading">R</span>
+                <span class="resume-heading">E</span>
+                <span class="resume-heading">S</span>
+                <span class="resume-heading">U</span>
+                <span class="resume-heading">M</span>
+                <span class="resume-heading">E</span>
+            </h1>
+            <a href="resume.pdf" target="_blank">Download Resume</a>
+        </div>
+
+        <!-- Toggle button for light/dark mode
+        <div id="toggle-mode" class="toggle-switch">
+            <input type="checkbox" id="mode-toggle" onchange="toggleMode()">
+            <label for="mode-toggle"></label>
+        </div> -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

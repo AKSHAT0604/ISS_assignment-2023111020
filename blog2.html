@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="blog1.css">
+    <title>Blog 2</title>
+    <style>
+        /* Add your styles here */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Blog Title 2</h1>
+    <p>Blog content goes here.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis distinctio dolor sunt. Explicabo praesentium corporis voluptatibus voluptatum, modi, cupiditate quam odio eos aliquid delectus exercitationem! Recusandae, vel! Vero modi nostrum inventore voluptate? Aliquid eum animi reiciendis repellendus inventore? Corporis, sapiente assumenda voluptatibus aspernatur atque ipsa fugiat fugit laboriosam magnam accusamus possimus! Ab temporibus, illo quis fugiat voluptate, labore ipsum facere libero quidem quos dicta iusto error aliquam quaerat cumque rem quae natus esse vero soluta porro distinctio autem. Neque vero pariatur nesciunt, distinctio nihil, doloribus exercitationem consectetur odit ad alias dignissimos, ipsa maiores consequatur aperiam ab nulla tempore? In labore dolore placeat dolorum temporibus vitae voluptas quasi saepe perspiciatis natus autem, inventore voluptate optio velit odio vero quis porro omnis deleniti unde numquam. Repudiandae sequi repellat adipisci corrupti. Assumenda exercitationem obcaecati aperiam tenetur corporis nostrum totam distinctio iusto perferendis cum dolore dolorum mollitia, alias ex consequuntur eum animi itaque sed nam iure nihil voluptates! Voluptatum similique, nihil, pariatur rerum fuga, sit itaque dolore repellat corrupti a explicabo accusamus! Illo pariatur placeat necessitatibus maiores harum earum distinctio quia aliquam! Voluptatem debitis atque beatae corporis repudiandae enim esse impedit necessitatibus non temporibus suscipit, ratione nam aliquam eos cumque? Vero eum nobis soluta!
+    </p>
+    <div class="interaction-section">
+        <button id="like_button_blog2" onclick="likePost('blog2')">Like</button>
+        <span id="likes_blog2">0 Likes</span>
+        <!-- Add this button to toggle comments visibility -->
+         <button onclick="toggleCommentsVisibility('comments_blog2')">Show Comments</button>
+
+        <div id="comments_blog2" class="hidden">
+            <!-- Comments go here -->
+        </div>
+        <textarea id="comment_input_blog2" placeholder="Add your comment"></textarea>
+        <button onclick="addComment('blog2')">Add Comment</button>
+    </div>
+
+    <script>
+        // Function to add a comment
+        function addComment(blogId) {
+            const commentInput = document.getElementById('comment_input_blog2');
+            const commentsSection = document.getElementById('comments_blog2');
+
+            // Get existing comments from local storage
+            let existingComments = JSON.parse(localStorage.getItem(`${blogId}_comments`)) || [];
+
+            // Add the new comment
+            existingComments.push(commentInput.value);
+
+            // Save the updated comments to local storage
+            localStorage.setItem(`${blogId}_comments`, JSON.stringify(existingComments));
+
+            // Display the comments
+            displayComments(existingComments, commentsSection);
+
+            // Clear the input field
+            commentInput.value = '';
+        }
+
+        // Function to display comments
+        function displayComments(comments, container) {
+            container.innerHTML = ''; // Clear existing comments
+
+            // Display each comment
+            comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.textContent = comment;
+                container.appendChild(commentElement);
+            });
+
+            // Hide or show comments based on the 'hidden' class
+            container.classList.toggle('hidden', comments.length === 0);
+        }
+
+        // Function to toggle visibility of comments
+        function toggleCommentsVisibility(containerId, initial = false) {
+            const container = document.getElementById(containerId);
+            container.classList.toggle('hidden', initial);
+        }
+
+
+        // Function to handle liking a post
+        function likePost(blogId) {
+            const likesSpan = document.getElementById(`likes_${blogId}`);
+
+            // Get existing likes from local storage
+            let existingLikes = parseInt(localStorage.getItem(`${blogId}_likes`)) || 0;
+
+            // Increment the likes
+            existingLikes++;
+
+            // Save the updated likes to local storage
+            localStorage.setItem(`${blogId}_likes`, existingLikes);
+
+            // Display the updated likes
+            likesSpan.textContent = `${existingLikes} Likes`;
+        }
+
+        // Display existing comments, likes, and comments visibility on page load
+        const commentsSection = document.getElementById('comments_blog2');
+        const existingComments = JSON.parse(localStorage.getItem('blog2_comments')) || [];
+        displayComments(existingComments, commentsSection);
+
+        const existingLikes = parseInt(localStorage.getItem('blog2_likes')) || 0;
+        document.getElementById('likes_blog2').textContent = `${existingLikes} Likes`;
+
+        // Toggle comments visibility based on the 'hidden' class
+        toggleCommentsVisibility('comments_blog2', true);
+
+    </script>
+</body>
+
+</html>
